@@ -1,5 +1,8 @@
 package UHC;
 
+import UHC.api.scoreboard.Scoreboard;
+import UHC.task.ScoreboardUpdaterTask;
+
 import cn.nukkit.command.Command;
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
@@ -10,9 +13,10 @@ public class Loader extends PluginBase {
 
     @Getter protected static Loader instance = new Loader();
 
+    @Getter protected static Scoreboard scoreboard = new Scoreboard();
+
     @Override
     public void onLoad() {
-
     }
 
     @Override
@@ -20,6 +24,8 @@ public class Loader extends PluginBase {
         registerListener(
                 new MainListener()
         );
+
+        getServer().getScheduler().scheduleRepeatingTask(new ScoreboardUpdaterTask(), 20);
     }
 
     @Override

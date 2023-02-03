@@ -31,7 +31,7 @@ public class Session {
     }
 
     public Player getPlayerNonNull() throws PluginException {
-        Player result = Server.getInstance().getPlayer(getRawUUID());
+        Player result = Server.getInstance().getPlayer(getName());
         if(result == null){
             throw new PluginException("Player is offline");
         }
