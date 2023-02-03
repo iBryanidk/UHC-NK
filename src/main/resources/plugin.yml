@@ -1,0 +1,5 @@
+name: UHC
+version: 1.0.0
+main: UHC.Loader
+author: iBryandidk
+api: ["1.0.14"]
