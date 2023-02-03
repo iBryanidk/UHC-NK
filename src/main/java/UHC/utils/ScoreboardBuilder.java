@@ -17,9 +17,9 @@ public class ScoreboardBuilder {
 
         scoreboard.setDisplayName(TextFormat.colorize("&r&l&dUHC"));
 
-        lines.add("&r ---------------------------- ");
-        lines.add(TextFormat.colorize("&rStatus: " + "&4Unavailable game"));
-        lines.add("&7 ---------------------------- ");
+        lines.add(TextFormat.colorize("&r&7 --------------------- "));
+        lines.add(TextFormat.colorize("&r  Status: " + "&4Unavailable game "));
+        lines.add(TextFormat.colorize("&7&7 --------------------- "));
 
         for(int i = 0; i < lines.size(); i++){
             scoreboard.setLine(i + 1, lines.get(i));

@@ -27,7 +27,7 @@ public class Scoreboard {
     public Scoreboard() {
         displayName = "";
         displaySlot = DisplaySlot.SIDEBAR;
-        criteria = String.valueOf(DisplaySlot.DUMMY);
+        criteria = "dummy";
         sortOrder = SortOrder.DESCENDING;
     }
 
@@ -76,7 +76,7 @@ public class Scoreboard {
         player.dataPacket(scorePacket);
     }
 
-    public void hide(Player player, boolean b) {
+    public void hide(Player player) {
         RemoveObjectivePacket packet = new RemoveObjectivePacket();
 
         packet.setObjectiveId("objective");
