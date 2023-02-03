@@ -1,6 +1,6 @@
 package UHC.api.scoreboard;
 
-import UHC.api.scoreboard.packet.data.ScorerInfo;
+import UHC.api.scoreboard.packet.data.ScoreboardInfo;
 import UHC.api.scoreboard.packet.data.SortOrder;
 
 import UHC.api.scoreboard.line.ScoreboardLine;
@@ -71,7 +71,7 @@ public class Scoreboard {
 
         SetScorePacket scorePacket = new SetScorePacket(SetScorePacket.Action.SET);
 
-        lines.forEach((index, line) -> scorePacket.getInfos().add(new ScorerInfo((long)index, "objective", index, line.getText())));
+        lines.forEach((index, line) -> scorePacket.getInfos().add(new ScoreboardInfo((long)index, "objective", index, line.getText())));
 
         player.dataPacket(scorePacket);
     }

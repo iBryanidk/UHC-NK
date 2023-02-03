@@ -1,6 +1,6 @@
 package UHC.api.scoreboard.packet;
 
-import UHC.api.scoreboard.packet.data.ScorerInfo;
+import UHC.api.scoreboard.packet.data.ScoreboardInfo;
 import cn.nukkit.network.protocol.DataPacket;
 
 import java.util.List;
@@ -10,7 +10,7 @@ public class SetScorePacket extends DataPacket {
     public static final byte NETWORK_ID = 108;
 
     private final SetScorePacket.Action action;
-    private final List<ScorerInfo> infos = new ArrayList();
+    private final List<ScoreboardInfo> infos = new ArrayList();
 
     public byte pid() {
         return NETWORK_ID;
@@ -26,7 +26,7 @@ public class SetScorePacket extends DataPacket {
         putByte((byte)action.ordinal());
         putUnsignedVarInt(infos.size());
 
-        for(ScorerInfo info : infos){
+        for(ScoreboardInfo info : infos){
 
             putVarLong(info.getScoreboardId());
             putString(info.getObjectiveId());
@@ -50,7 +50,7 @@ public class SetScorePacket extends DataPacket {
         this.action = action;
     }
 
-    public List<ScorerInfo> getInfos() {
+    public List<ScoreboardInfo> getInfos() {
         return infos;
     }
 

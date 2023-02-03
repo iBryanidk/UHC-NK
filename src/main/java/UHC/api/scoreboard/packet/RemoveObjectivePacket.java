@@ -21,8 +21,6 @@ public class RemoveObjectivePacket extends DataPacket {
         putString(objectiveId);
     }
 
-    public String getObjectiveId() { return objectiveId; }
-
     public void setObjectiveId(String objectiveId) {
         this.objectiveId = objectiveId;
     }

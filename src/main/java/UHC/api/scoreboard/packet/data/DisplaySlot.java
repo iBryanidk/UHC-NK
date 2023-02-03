@@ -13,6 +13,6 @@ public enum DisplaySlot {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 }
