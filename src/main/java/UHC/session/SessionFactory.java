@@ -3,6 +3,7 @@ package UHC.session;
 import cn.nukkit.Player;
 import lombok.Getter;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class SessionFactory {
 
@@ -10,8 +11,8 @@ public class SessionFactory {
 
     protected HashMap<String, Session> sessions = new HashMap<>();
 
-    public void addSession(String name, String rawUUID) {
-        sessions.put(name, new Session(name, rawUUID));
+    public void addSession(String name, UUID rawUUID, String device, String deviceModel) {
+        sessions.put(name, new Session(name, rawUUID, device, deviceModel));
     }
 
     public void removeSession(String name) {

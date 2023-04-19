@@ -10,6 +10,7 @@ import UHC.api.scoreboard.packet.SetScorePacket;
 import UHC.api.scoreboard.packet.data.DisplaySlot;
 
 import cn.nukkit.Player;
+import cn.nukkit.utils.TextFormat;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class Scoreboard {
         displayName = "";
         displaySlot = DisplaySlot.SIDEBAR;
         criteria = "dummy";
-        sortOrder = SortOrder.DESCENDING;
+        sortOrder = SortOrder.ASCENDING;
     }
 
     public void setDisplayName(String displayName) {
@@ -51,6 +52,10 @@ public class Scoreboard {
         }
     }
 
+    public void removeLines() {
+        lines.clear();
+    }
+
     private void checkLineIndex(int index) {
         if(index < 1 || index > 15){
             throw new IllegalArgumentException("Index must be major than 0 and less than 15");
@@ -71,7 +76,7 @@ public class Scoreboard {
 
         SetScorePacket scorePacket = new SetScorePacket(SetScorePacket.Action.SET);
 
-        lines.forEach((index, line) -> scorePacket.getInfos().add(new ScoreboardInfo((long)index, "objective", index, line.getText())));
+        lines.forEach((index, line) -> scorePacket.getInfos().add(new ScoreboardInfo((long)index, "objective", index, TextFormat.colorize(" " + line.getText()))));
 
         player.dataPacket(scorePacket);
     }
