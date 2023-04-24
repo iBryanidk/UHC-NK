@@ -42,7 +42,7 @@ public class ScoreboardBuilder {
                 case PREPARING:
 
                     lines.add("&rStatus: " + GameStatus.fromId(handler.getStatus()));
-                    lines.add("&rPreparing ends in: " + Time.intToString(handler.getPreparingTime()));
+                    lines.add("&rPreparing ends in: " + Time.formatString(handler.getPreparingTime()));
 
                     lines.add(" ");
 
@@ -59,7 +59,7 @@ public class ScoreboardBuilder {
                 case STARTING:
 
                     lines.add("&rStatus: " + GameStatus.fromId(handler.getStatus()));
-                    lines.add("&rStarting in: " + Time.intToString(handler.getStartingTime()));
+                    lines.add("&rStarting in: " + Time.formatString(handler.getStartingTime()));
 
                     lines.add(" ");
 

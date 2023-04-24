@@ -7,11 +7,17 @@ import UHC.command.UhcCommand;
 import UHC.team.command.TeamCommand;
 
 import UHC.utils.DefaultPermissionNames;
+
+import UHC.utils.Time;
 import cn.nukkit.command.Command;
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 
+import cn.nukkit.utils.TextFormat;
 import lombok.Getter;
+import com.denzelcode.form.FormAPI;
+
+import java.util.ArrayList;
 
 public class Loader extends PluginBase {
 
@@ -26,6 +32,9 @@ public class Loader extends PluginBase {
 
     @Override
     public void onEnable() {
+
+        FormAPI.init(this);
+
         registerListener(
                 new MainListener()
         );

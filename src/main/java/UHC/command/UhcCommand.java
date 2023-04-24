@@ -3,6 +3,7 @@ package UHC.command;
 import UHC.session.Session;
 import UHC.session.SessionFactory;
 
+import UHC.arena.GameSetup;
 import UHC.arena.GameHandler;
 
 import cn.nukkit.Player;
@@ -75,6 +76,7 @@ public class UhcCommand extends Command {
                     sender.sendMessage(TextFormat.colorize("&cYou aren't host."));
                     return false;
                 }
+                GameSetup.getInstance().sendSetupForm((Player) sender);
             }
             case "host" -> {
                 if(!GameHandler.getInstance().isWaiting()){
@@ -92,12 +94,12 @@ public class UhcCommand extends Command {
                 }
                 if(session.isHost()){
                     session.setHost(false);
-                    sender.sendMessage(TextFormat.colorize("You're new &l&4HOST&r from &l&7UHC&r&f."));
+                    sender.sendMessage(TextFormat.colorize("You're not &l&4HOST&r from &l&7UHC&r&f."));
 
                     GameHandler.getInstance().setHost(null);
                 }else{
                     session.setHost(true);
-                    sender.sendMessage(TextFormat.colorize("You're not &l&4HOST&r from &l&7UHC&r&f."));
+                    sender.sendMessage(TextFormat.colorize("You're new &l&4HOST&r from &l&7UHC&r&f."));
 
                     GameHandler.getInstance().setHost(session);
                 }

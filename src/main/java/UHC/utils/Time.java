@@ -1,8 +1,12 @@
 package UHC.utils;
 
+import java.util.concurrent.TimeUnit;
+
 public class Time {
 
-    public static String intToString(int time) {
+    protected static String UPTIME_FORMAT = "%d" + " days " + "%d" + " hours " + "%d" + " minutes " + "%d" + " seconds";
+
+    public static String formatString(int time) {
         String strTemp;
 
         int minutes = time / 60;
@@ -19,5 +23,20 @@ public class Time {
             strTemp = strTemp + seconds;
         }
         return strTemp;
+    }
+
+    public static String formatUptime(long uptime) {
+        long days = TimeUnit.MILLISECONDS.toDays(uptime);
+        uptime -= TimeUnit.DAYS.toMillis(days);
+
+        long hours = TimeUnit.MILLISECONDS.toHours(uptime);
+        uptime -= TimeUnit.HOURS.toMillis(hours);
+
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(uptime);
+        uptime -= TimeUnit.MINUTES.toMillis(minutes);
+
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(uptime);
+
+        return String.format(UPTIME_FORMAT, days, hours, minutes, seconds);
     }
 }

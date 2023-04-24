@@ -1,7 +1,11 @@
 package UHC.team;
 
+import UHC.session.Session;
+import UHC.session.SessionFactory;
+
 import cn.nukkit.Player;
 import cn.nukkit.Server;
+
 import cn.nukkit.utils.PluginException;
 import cn.nukkit.utils.TextFormat;
 
@@ -74,20 +78,24 @@ public class Team {
         return members;
     }
 
-    public ArrayList<Player> getOnlineMembers() {
-        ArrayList<Player> players = new ArrayList<>();
+    public ArrayList<Session> getOnlineMembers() {
+        ArrayList<Session> ms = new ArrayList<>();
         for(TeamMember teamMember : getMembers().values()){
-            Player player = Server.getInstance().getPlayerExact(teamMember.getName());
-            if(player == null){
+            Session session = SessionFactory.getInstance().getSession(teamMember.getName());
+            if(session == null || session.getPlayer() == null){
                 continue;
             }
-            players.add(player);
+            ms.add(session);
         }
-        return players;
+        return ms;
     }
 
     public void broadcastMessage(String m) {
-        for(Player player : getOnlineMembers()){
+        for(Session session : getOnlineMembers()){
+            Player player;
+            if((player = session.getPlayer()) == null){
+                continue;
+            }
             player.sendMessage(m);
         }
     }
