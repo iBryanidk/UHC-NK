@@ -25,11 +25,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.Josscoder</groupId>
-            <artifactId>FormAPI</artifactId>
-            <version>ac7e2c7580</version>
-        </dependency>
-        <dependency>
             <groupId>cn.nukkit</groupId>
             <artifactId>nukkit</artifactId>
             <version>1.0-SNAPSHOT</version>
